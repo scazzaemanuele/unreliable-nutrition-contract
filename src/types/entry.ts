@@ -8,6 +8,7 @@ export type Entry = {
     carbs: number;
     fat: number;
   };
+  timestamp: string;
   meta: {
     source: string;
     flags: string[];

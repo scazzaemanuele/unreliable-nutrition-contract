@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { type Entry } from "../types/entry";
+import { audit } from "../lib/audit";
 
 const SourceDSchema = z.object({
   id: z.string(),
@@ -37,11 +38,12 @@ export const normalizeSourceD = (raw: unknown): Entry | null => {
   return {
     id: data.id,
     name: data.food,
+    timestamp: data.time,
     calories,
     macros: { protein, carbs, fat },
     meta: {
       source: "Source D",
-      flags: [],
+      flags: audit(protein, carbs, fat, calories),
     },
   };
 };
