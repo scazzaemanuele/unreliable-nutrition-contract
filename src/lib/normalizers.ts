@@ -1,11 +1,12 @@
 import { normalizeSourceA } from "../schemas/sourceA";
+import { normalizeSourceB } from "../schemas/sourceB";
+import { normalizeSourceC } from "../schemas/sourceC";
+import { normalizeSourceD } from "../schemas/sourceD";
 import type { Entry } from "../types/entry";
-
-const normalizeMock = () => null;
 
 export const normalizers: Record<string, (data: unknown) => Entry | null> = {
   a: normalizeSourceA,
-  b: normalizeMock,
-  c: normalizeMock,
-  d: normalizeMock,
+  b: normalizeSourceB,
+  c: normalizeSourceC,
+  d: normalizeSourceD,
 };
