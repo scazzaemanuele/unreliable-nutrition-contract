@@ -1,4 +1,5 @@
 import { useQueries } from "@tanstack/react-query";
+import { normalizers } from "../lib/normalizers";
 
 const fetchEntries = (source: string) =>
   fetch(`http://localhost:3001/entries?source=${source}`).then((res) =>
@@ -10,6 +11,8 @@ export const useGetEntries = () => {
     queries: ["a", "b", "c", "d"].map((source) => ({
       queryKey: ["entries", source],
       queryFn: () => fetchEntries(source),
+      select: (data: unknown[]) =>
+        data.map(normalizers[source]).filter(Boolean),
     })),
   });
 };

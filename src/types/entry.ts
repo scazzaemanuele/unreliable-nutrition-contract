@@ -3,6 +3,7 @@ export type Entry = {
   name: string;
   calories: number; // Kcal
   macros: {
+    // g
     protein: number;
     carbs: number;
     fat: number;
